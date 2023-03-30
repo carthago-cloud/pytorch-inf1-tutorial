@@ -17,14 +17,11 @@ def predict(input_text):
 
 
 # To use one neuron core per worker
-os.environ["NEURON_RT_NUM_CORES"] = "0"
+os.environ["NEURON_RT_NUM_CORES"] = "1"
 
 # saved weights name
-AWS_NEURON_TRACED_WEIGHTS_NAME = "neuron_model.pt"
+AWS_NEURON_TRACED_WEIGHTS_NAME = "model.pt"
 
 tokenizer = AutoTokenizer.from_pretrained(MODEL_DIR)
 model = torch.jit.load(os.path.join(MODEL_DIR, AWS_NEURON_TRACED_WEIGHTS_NAME))
 model_config = AutoConfig.from_pretrained(MODEL_DIR)
-
-print(predict("bad"))
-print(predict("good"))
