@@ -3,7 +3,7 @@ import time
 from fastapi import FastAPI
 from pydantic import BaseModel
 
-from inference_neuron import predict
+from neuron_inference import predict
 
 
 class ModelInput(BaseModel):
